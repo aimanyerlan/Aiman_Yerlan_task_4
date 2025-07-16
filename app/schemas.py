@@ -1,4 +1,16 @@
 from pydantic import BaseModel
+from datetime import datetime
+
+class NoteCreate(BaseModel):
+    text: str
+
+class NoteOut(BaseModel):
+    id: int
+    text: str
+    created_at: datetime
+
+    class Config:
+        orm_mode = True
 
 class UserCreate(BaseModel):
     username: str
@@ -8,7 +20,7 @@ class UserLogin(BaseModel):
     username: str
     password: str
 
-class UserResponse(BaseModel):
+class UserOut(BaseModel):
     id: int
     username: str
 
